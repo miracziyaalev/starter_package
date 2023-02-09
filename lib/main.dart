@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '202/tab_learn.dart';
+import '202/3_model_learn_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,10 +50,9 @@ class MyApp extends StatelessWidget {
           ),
           bottomAppBarTheme: const BottomAppBarTheme(
             shape: CircularNotchedRectangle(),
-            
           )),
       debugShowCheckedModeBanner: false,
-      home: const TabLearn(),
+      home: const ModelLearnView(),
     );
   }
 }
