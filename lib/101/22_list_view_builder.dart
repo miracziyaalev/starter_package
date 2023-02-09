@@ -18,7 +18,6 @@ class _ListViewBuilderLearnState extends State<ListViewBuilderLearn> {
           return const Divider();
         },
         itemBuilder: (context, index) {
-         
           return Card(
             color: Colors.amber,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

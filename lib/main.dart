@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '101/21_list_view_learn.dart';
-import '101/22_list_view_builder.dart';
-import '101/23_navigation_learn.dart';
-import 'demos/5_my_collections_demos_view.dart';
+import '202/tab_learn.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,9 +41,19 @@ class MyApp extends StatelessWidget {
               )),
           progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.red),
           //listTile temalarimin paddinglerini 0a cektim
-          listTileTheme: const ListTileThemeData(contentPadding: EdgeInsets.zero)),
+          listTileTheme: const ListTileThemeData(contentPadding: EdgeInsets.zero),
+          tabBarTheme: const TabBarTheme(
+            labelColor: Colors.blueGrey,
+            unselectedLabelColor: Colors.white,
+            indicatorColor: Colors.white,
+            //indicatorSize: TabBarIndicatorSize.label,
+          ),
+          bottomAppBarTheme: const BottomAppBarTheme(
+            shape: CircularNotchedRectangle(),
+            
+          )),
       debugShowCheckedModeBanner: false,
-      home: const NavigationLearn(),
+      home: const TabLearn(),
     );
   }
 }
