@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+import 'package:starter_package/202/service/comment_model.dart';
+import 'package:starter_package/202/service/post_service.dart';
+
+class CommentsLearnView extends StatefulWidget {
+  const CommentsLearnView({super.key, this.postId});
+  final int? postId;
+
+  @override
+  State<CommentsLearnView> createState() => _CommentsLearnViewState();
+}
+
+class _CommentsLearnViewState extends State<CommentsLearnView> {
+  late final IPostService postService;
+  List<CommentModel>? _commentsItem;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    postService = PostService();
+
+    fetchItemsWithId(widget.postId ?? 0);
+  }
+
+  void _changeLoading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
+  }
+
+  Future<void> fetchItemsWithId(int postId) async {
+    _changeLoading();
+    _commentsItem = await postService.fetchReleatedCommentsWithPostId(postId);
+    _changeLoading();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: ListView.builder(
+        itemCount: _commentsItem?.length ?? 0,
+        itemBuilder: (context, index) {
+          return Card(
+            child: Text(_commentsItem?[index].email ?? ''),
+          );
+        },
+      ),
+    );
+  }
+}

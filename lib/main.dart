@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '202/3_model_learn_view.dart';
+import '202/service/service_get_learn_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             shape: CircularNotchedRectangle(),
           )),
       debugShowCheckedModeBanner: false,
-      home: const ModelLearnView(),
+      home: const ServiceLearn(),
     );
   }
 }
