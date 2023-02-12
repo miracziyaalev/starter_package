@@ -63,7 +63,7 @@ class PostService implements IPostService {
   @override
   Future<bool> deleteItemToService(int id) async {
     try {
-      final response = await _networkManager.put("${_PostServicePaths.posts.name}/$id");
+      final response = await _networkManager.delete("${_PostServicePaths.posts.name}/$id");
 
       return response.statusCode == HttpStatus.ok;
     } on DioError catch (exception) {

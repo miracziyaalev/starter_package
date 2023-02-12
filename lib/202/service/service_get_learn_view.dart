@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:starter_package/202/service/post_model.dart';
 import 'package:starter_package/202/service/post_service.dart';
@@ -15,8 +14,6 @@ class ServiceLearn extends StatefulWidget {
 class _ServiceLearnState extends State<ServiceLearn> {
   List<PostModel>? _items;
   bool _isLoading = false;
-  late final Dio _networkManager;
-  final String _baseUrl = 'https://jsonplaceholder.typicode.com/';
 
 //TEST edilebilir kod
   late final IPostService _postService;
@@ -24,7 +21,7 @@ class _ServiceLearnState extends State<ServiceLearn> {
   @override
   void initState() {
     super.initState();
-    _networkManager = Dio(BaseOptions(baseUrl: _baseUrl));
+
     _postService = PostService();
     fetchPostItemsAdvance();
   }
