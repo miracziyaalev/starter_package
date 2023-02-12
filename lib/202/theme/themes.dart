@@ -33,7 +33,7 @@ class LightTheme {
 }
 
 class _DarkThemeColor {
-  final Color _textColor = const Color.fromARGB(255, 74, 1, 1);
+  final Color _textColor = const Color.fromARGB(255, 208, 208, 208);
   final Color _floatingActionButtonColor = Colors.blueGrey;
 }
 
