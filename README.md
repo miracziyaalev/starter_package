@@ -1,6 +1,6 @@
 # starter_package
 
-A new Flutter project.
+from the zero level to hero level.
 
 ## Getting Started
 
