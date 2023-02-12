@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starter_package/202/theme/themes.dart';
 
-import '202/5_theme_learn_view.dart';
+import 'demos/6_custom_text_field.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       //       shape: CircularNotchedRectangle(),
       //     )),
       debugShowCheckedModeBanner: false,
-      home: const ThemeLearnView(),
+      home: const CustomTextField(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DarkTheme {
   final _darkColor = _DarkThemeColor();
@@ -8,7 +9,9 @@ class DarkTheme {
   DarkTheme() {
     theme = ThemeData(
         appBarTheme: const AppBarTheme(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)))),
+            systemOverlayStyle: SystemUiOverlayStyle.light,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(20))),
+            color: Colors.amber),
         floatingActionButtonTheme:
             FloatingActionButtonThemeData(backgroundColor: _darkColor._floatingActionButtonColor),
         buttonTheme: const ButtonThemeData(colorScheme: ColorScheme.dark(onPrimary: Colors.white)),
