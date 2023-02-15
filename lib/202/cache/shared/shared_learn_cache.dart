@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:starter_package/202/cache/shared/shared_manager.dart';
+import 'package:starter_package/202/cache/shared/user_model.dart';
 
 class SharedLearn extends StatefulWidget {
   const SharedLearn({super.key});
@@ -11,6 +14,7 @@ class SharedLearn extends StatefulWidget {
 class _SharedLearnState extends LoadingStatefull<SharedLearn> {
   int _currentValue = 0;
   late final SharedManager _sharedManager;
+  late List<User> usersItems = [];
 
   void _onChangedValue(String value) {
     final value0 = int.tryParse(value);
@@ -37,10 +41,6 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
   }
 
   Future<void> readData() async {
-    // final prefs = await SharedPreferences.getInstance();
-
-    // final int? counter = prefs.getInt('counter');
-
     _onChangedValue(_sharedManager.getString(SharedKeys.counter) ?? '');
   }
 
@@ -48,23 +48,36 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          isLoading
-              ? Center(child: CircularProgressIndicator(color: themeData.scaffoldBackgroundColor))
-              : const SizedBox.shrink()
-        ],
+        actions: [_loading()],
         title: Text(_currentValue.toString()),
       ),
-      body: TextField(
-        keyboardType: TextInputType.number,
-        onChanged: (value) {
-          _onChangedValue(value);
-        },
+      body: Column(
+        children: [
+          customField(),
+          Expanded(
+            child: _UserListView(),
+          )
+        ],
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [_saveButton(), _removeButton()],
       ),
+    );
+  }
+
+  SingleChildRenderObjectWidget _loading() {
+    return isLoading
+        ? Center(child: CircularProgressIndicator(color: themeData.scaffoldBackgroundColor))
+        : const SizedBox.shrink();
+  }
+
+  TextField customField() {
+    return TextField(
+      keyboardType: TextInputType.number,
+      onChanged: (value) {
+        _onChangedValue(value);
+      },
     );
   }
 
@@ -92,6 +105,41 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
       },
       child: const Icon(Icons.save_alt_outlined),
     );
+  }
+}
+
+class _UserListView extends StatelessWidget {
+  _UserListView();
+
+  final List<User> users = UserItems().users;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: users.length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: ListTile(
+            title: Text(users[index].title ?? ''),
+            subtitle: Text(users[index].description ?? ''),
+            trailing: Text(users[index].url ?? "",
+                style: Theme.of(context).textTheme.headlineLarge?.copyWith(decoration: TextDecoration.underline)),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class UserItems {
+  late final List<User> users;
+
+  UserItems() {
+    users = [
+      User('vb', '100', 'vb10.dev'),
+      User('vb2', '102', 'vb10.dev'),
+      User('vb3', '103', 'vb10.dev'),
+    ];
   }
 }
 
