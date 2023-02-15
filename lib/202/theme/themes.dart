@@ -9,6 +9,7 @@ class DarkTheme {
   DarkTheme() {
     theme = ThemeData(
         appBarTheme: const AppBarTheme(
+            centerTitle: true,
             systemOverlayStyle: SystemUiOverlayStyle.light,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(20))),
             color: Colors.amber),
