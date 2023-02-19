@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../product/password_text_field.dart';
+import '../../product/password_text_field.dart';
 
 class ThemeLearnView extends StatefulWidget {
   const ThemeLearnView({super.key});

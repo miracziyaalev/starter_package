@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_package/202/2_model_learn.dart';
+import 'package:starter_package/202/learn/2_model_learn.dart';
 
 class ModelLearnView extends StatefulWidget {
   const ModelLearnView({super.key});

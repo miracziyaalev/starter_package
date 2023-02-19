@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starter_package/202/service/post_service.dart';
 
-import '../202/service/post_model.dart';
+import '../../202/service/post_model.dart';
 
 class FeedView extends StatefulWidget {
   const FeedView({super.key});

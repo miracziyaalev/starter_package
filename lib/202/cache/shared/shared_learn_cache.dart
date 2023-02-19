@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:starter_package/202/cache/shared/shared_manager.dart';
 import 'package:starter_package/202/cache/shared/user_model.dart';
 
+import '../../../product/base_states/loading_state.dart';
+
 class SharedLearn extends StatefulWidget {
   const SharedLearn({super.key});
 
@@ -143,14 +145,3 @@ class UserItems {
   }
 }
 
-abstract class LoadingStatefull<T extends StatefulWidget> extends State<T> {
-  ThemeData get themeData => Theme.of(context);
-
-  bool isLoading = false;
-
-  void changeLoading() {
-    setState(() {
-      isLoading = !isLoading;
-    });
-  }
-}

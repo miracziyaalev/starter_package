@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:starter_package/202/theme/themes.dart';
+import 'package:provider/provider.dart';
+import 'package:starter_package/product/global/resource_context.dart';
+import 'package:starter_package/product/global/theme_notifer.dart';
 
-import '303/3_tabbar_advance_learn.dart';
+import '303/reqres_resources/view/reqres_view.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      Provider(create: (context) => ResourceContext()),
+      ChangeNotifierProvider(create: (context) => ThemeNotifer())
+    ],
+    builder: (context, child) => const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: DarkTheme().theme,
+      theme: context.watch<ThemeNotifer>().currentTheme,
 
       // ThemeData.dark().copyWith(
       //     appBarTheme: const AppBarTheme(
@@ -53,7 +62,7 @@ class MyApp extends StatelessWidget {
       //       shape: CircularNotchedRectangle(),
       //     )),
       debugShowCheckedModeBanner: false,
-      home: const TabAdvanceLearn(),
+      home: const ReqresView(),
     );
   }
 }

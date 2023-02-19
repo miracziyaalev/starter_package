@@ -6,7 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:starter_package/303/1_generic_learn.dart';
+import 'package:starter_package/303/learn/1_generic_learn.dart';
 
 void main() {
   setUp(() {});

@@ -39,6 +39,8 @@ dependencies:
    # cache
   shared_preferences: ^2.0.17
   flutter_secure_storage: ^8.0.0
+  #states
+  provider: ^6.0.5
 
 
   # The following adds the Cupertino Icons font to your application.

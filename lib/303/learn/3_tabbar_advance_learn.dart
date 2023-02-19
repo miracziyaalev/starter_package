@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:starter_package/303/4_feed_view.dart';
+import 'package:starter_package/303/learn/4_feed_view.dart';
 
-import '../101/10_card_learn.dart';
-import '../101/16_stack_learn.dart';
-import '../101/6_icon_learn.dart';
+import '../../101/10_card_learn.dart';
+import '../../101/16_stack_learn.dart';
+import '../../101/6_icon_learn.dart';
 
 class TabAdvanceLearn extends StatefulWidget {
   const TabAdvanceLearn({super.key});
