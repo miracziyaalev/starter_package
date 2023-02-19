@@ -12,7 +12,7 @@ class DarkTheme {
             centerTitle: true,
             systemOverlayStyle: SystemUiOverlayStyle.light,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(20))),
-            color: Colors.amber),
+            color: Colors.blueGrey),
         floatingActionButtonTheme:
             FloatingActionButtonThemeData(backgroundColor: _darkColor._floatingActionButtonColor),
         buttonTheme: const ButtonThemeData(colorScheme: ColorScheme.dark(onPrimary: Colors.white)),
