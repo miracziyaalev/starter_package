@@ -6,7 +6,7 @@ import 'package:starter_package/303/reqres_resources/viewModel/reqres_provider.d
 import 'package:starter_package/product/extension/string_color_extension.dart';
 import 'package:starter_package/product/global/resource_context.dart';
 import 'package:starter_package/product/global/theme_notifer.dart';
-import 'package:starter_package/product/service/project_dio.dart';
+import 'package:starter_package/product/service/project_network_manager.dart';
 
 import '../model/resources_model.dart';
 
@@ -18,11 +18,11 @@ class ReqresView extends StatefulWidget {
 }
 
 //class _ReqresViewState extends ReqresViewModel
-class _ReqresViewState extends State<ReqresView> with ProjectDioMixin {
+class _ReqresViewState extends State<ReqresView> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ReqresProvider>(
-      create: (context) => ReqresProvider(ReqresService(service)),
+      create: (context) => ReqresProvider(ReqresService(ProjectNetworkManager.instance.service)),
       builder: (context, child) {
         return Scaffold(
           floatingActionButton: FloatingActionButton(

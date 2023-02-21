@@ -50,6 +50,10 @@ class GenericUser {
     this.id,
     this.money,
   );
+
+  bool findUserName(String name) {
+    return this.name == name;
+  }
 }
 
 class AdminUser extends GenericUser {

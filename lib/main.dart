@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:starter_package/product/global/resource_context.dart';
 import 'package:starter_package/product/global/theme_notifer.dart';
 
-import '303/reqres_resources/view/reqres_view.dart';
+import '303/learn/5_lottie_learn.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
       //       shape: CircularNotchedRectangle(),
       //     )),
       debugShowCheckedModeBanner: false,
-      home: const ReqresView(),
+      home: const LottieLearn(),
     );
   }
 }
