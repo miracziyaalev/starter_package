@@ -1,55 +1,63 @@
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'resources_model.g.dart';
+
+String _fetchCustom(String data) {
+  return "aa";
+}
+
+@JsonSerializable()
 class ResourcesModel {
   List<Data>? data;
 
   ResourcesModel({this.data});
 
-  ResourcesModel.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
-      });
-    }
+  factory ResourcesModel.fromJson(Map<String, dynamic> json) {
+    return _$ResourcesModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    return data;
+    return _$ResourcesModelToJson(this);
   }
 }
 
-class Data {
-  int? id;
-  String? name;
-  int? year;
-  String? color;
-  String? pantoneValue;
+// gelen veriyi direkt parse ettirebiliyorsun. fieldRename..
+@JsonSerializable()
+class Data extends Equatable{
+  final int? id;
+  final String? name;
+  final int? year;
+  // @JsonKey(name: 'renk')
+  final String? color;
+  //@JsonKey(fromJson: _fetchCustom)
+  final String? pantoneValue;
+  final StatusCode? status;
 
-  Data({this.id, this.name, this.year, this.color, this.pantoneValue});
+  Data({this.id, this.name, this.year, this.color, this.status, this.pantoneValue});
 
   int get colorValue {
     var newColor = color?.replaceFirst("#", "0xff") ?? '';
     return int.parse(newColor);
   }
 
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    year = json['year'];
-    color = json['color'];
-    pantoneValue = json['pantone_value'];
+  factory Data.fromJson(Map<String, dynamic> json) {
+    return _$DataFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['year'] = year;
-    data['color'] = color;
-    data['pantone_value'] = pantoneValue;
-    return data;
+    return _$DataToJson(this);
   }
+  
+
+  // id, name ve year ayniysa benim icin esittir. 
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, name, year];
+}
+
+enum StatusCode {
+  @JsonValue(200)
+  succes,
+  @JsonValue(500)
+  weird
 }

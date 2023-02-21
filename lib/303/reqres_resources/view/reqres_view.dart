@@ -20,12 +20,6 @@ class ReqresView extends StatefulWidget {
 //class _ReqresViewState extends ReqresViewModel
 class _ReqresViewState extends State<ReqresView> with ProjectDioMixin {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ReqresProvider>(
       create: (context) => ReqresProvider(ReqresService(service)),
@@ -36,12 +30,12 @@ class _ReqresViewState extends State<ReqresView> with ProjectDioMixin {
               context.read<ThemeNotifer>().changeTheme();
             },
           ),
-          appBar: AppBar(actions: [
-            _SaveAndNavigateWidget()
-          ], title: context.watch<ReqresProvider>().isLoading ? const CircularProgressIndicator() : null),
+          appBar: AppBar(
+              actions: const [_SaveAndNavigateWidget()],
+              title: context.watch<ReqresProvider>().isLoading ? const CircularProgressIndicator() : null),
           body: Column(
             children: [
-              _TempPlaceHolder(),
+              const _TempPlaceHolder(),
               Expanded(child: _resourceListview(context, context.watch<ReqresProvider>().resources)),
             ],
           ),
@@ -63,9 +57,7 @@ class _ReqresViewState extends State<ReqresView> with ProjectDioMixin {
 }
 
 class _SaveAndNavigateWidget extends StatelessWidget {
-  const _SaveAndNavigateWidget({
-    super.key,
-  });
+  const _SaveAndNavigateWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +75,7 @@ class _SaveAndNavigateWidget extends StatelessWidget {
 }
 
 class _TempPlaceHolder extends StatelessWidget {
-  const _TempPlaceHolder({
-    super.key,
-  });
+  const _TempPlaceHolder();
 
   @override
   Widget build(BuildContext context) {
